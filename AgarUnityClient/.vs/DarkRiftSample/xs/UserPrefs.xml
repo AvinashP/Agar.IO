@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{FC56B59E-AC79-B07E-245F-E4ED8ECFB309}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Player.cs" Line="45" Column="1" />
+      <File FileName="Assets/Scripts/PlayerSpawner.cs" Line="82" Column="48" />
+      <File FileName="Assets/Scripts/AgarObject.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/NetworkPlayerManager.cs" Line="53" Column="63" />
+      <File FileName="Assets/DarkRift/DarkRift/Plugins/Server/XmlUnityServer.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AgarPlugin" expanded="True" />
+          <Node name="DarkRiftSample" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Player.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="70a5bb6a-e86e-45e5-8850-89dcc061c378" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

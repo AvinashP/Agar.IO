@@ -1,0 +1,15 @@
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/bin/Debug/netstandard2.0/AgarPlugin.deps.json
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/bin/Debug/netstandard2.0/AgarPlugin.dll
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/bin/Debug/netstandard2.0/AgarPlugin.pdb
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/bin/Debug/netstandard2.0/DarkRift.dll
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/bin/Debug/netstandard2.0/DarkRift.Server.dll
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/bin/Debug/netstandard2.0/DarkRift.Server.pdb
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/bin/Debug/netstandard2.0/DarkRift.Server.xml
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/bin/Debug/netstandard2.0/DarkRift.pdb
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/bin/Debug/netstandard2.0/DarkRift.xml
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/obj/Debug/netstandard2.0/AgarPlugin.csprojAssemblyReference.cache
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/obj/Debug/netstandard2.0/AgarPlugin.AssemblyInfoInputs.cache
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/obj/Debug/netstandard2.0/AgarPlugin.AssemblyInfo.cs
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/obj/Debug/netstandard2.0/AgarPlugin.csproj.CopyComplete
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/obj/Debug/netstandard2.0/AgarPlugin.dll
+/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/obj/Debug/netstandard2.0/AgarPlugin.pdb
