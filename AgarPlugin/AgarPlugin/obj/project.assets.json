@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/AgarPlugin.csproj",
+      "projectUniqueName": "/Users/Avinash/Projects/UnitySamples/DarkRift_2/Agar.IO/AgarPlugin/AgarPlugin/AgarPlugin.csproj",
       "projectName": "AgarPlugin",
-      "projectPath": "/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/AgarPlugin.csproj",
+      "projectPath": "/Users/Avinash/Projects/UnitySamples/DarkRift_2/Agar.IO/AgarPlugin/AgarPlugin/AgarPlugin.csproj",
       "packagesPath": "/Users/Avinash/.nuget/packages/",
-      "outputPath": "/Users/Avinash/Projects/UnitySamples/AgarPlugin/AgarPlugin/obj/",
+      "outputPath": "/Users/Avinash/Projects/UnitySamples/DarkRift_2/Agar.IO/AgarPlugin/AgarPlugin/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

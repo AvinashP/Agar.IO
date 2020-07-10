@@ -1,17 +1,30 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="AgarPlugin/AgarPlayerManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../AgarUnityClient/Assets/Scripts/FoodManager.cs">
     <Files>
-      <File FileName="AgarPlugin/Player.cs" Line="24" Column="10" />
-      <File FileName="AgarPlugin/Tags.cs" Line="8" Column="57" />
-      <File FileName="AgarPlugin/AgarPlayerManager.cs" Line="101" Column="59" />
+      <File FileName="../AgarUnityClient/Assets/Scripts/NetworkPlayerManager.cs" Line="72" Column="56" />
+      <File FileName="AgarPlugin/AgarPlayerManager.cs" Line="130" Column="47" />
+      <File FileName="../AgarUnityClient/Assets/Scripts/PlayerSpawner.cs" Line="97" Column="1" />
+      <File FileName="../AgarUnityClient/Assets/Scripts/MouseController.cs" />
+      <File FileName="AgarPlugin/Player.cs" />
+      <File FileName="AgarPlugin/AgarFoodManager.cs" Line="85" Column="74" />
+      <File FileName="AgarPlugin/FoodItem.cs" />
+      <File FileName="AgarPlugin/IEdible.cs" />
+      <File FileName="../AgarUnityClient/Assets/Scripts/Player.cs" />
+      <File FileName="../AgarUnityClient/Assets/Scripts/FoodManager.cs" Line="67" Column="29" />
+      <File FileName="../AgarUnityClient/Assets/Scripts/CameraFollow.cs" Line="5" Column="26" />
+      <File FileName="../AgarUnityClient/Assets/Scripts/AgarObject.cs" Line="6" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="AgarPlugin" expanded="True">
-            <Node name="AgarPlugin" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="AgarPlayerManager.cs" selected="True" />
+            <Node name="AgarPlugin" expanded="True" />
+          </Node>
+          <Node name="AgarUnityClient" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="FoodManager.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

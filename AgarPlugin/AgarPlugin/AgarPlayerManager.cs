@@ -33,6 +33,7 @@ namespace AgarPlugin
         public AgarPlayerManager(PluginLoadData pluginLoadData) : base(pluginLoadData)
         {
             ClientManager.ClientConnected += ClientConnected;
+            ClientManager.ClientDisconnected += ClientDisconnected;
         }
 
         private void ClientConnected(object sender, ClientConnectedEventArgs e)
@@ -87,6 +88,22 @@ namespace AgarPlugin
             e.Client.MessageReceived += MovementMessageReceived;
         }
 
+        void ClientDisconnected(object sender, ClientDisconnectedEventArgs e)
+        {
+            players.Remove(e.Client);
+
+            using (DarkRiftWriter writer = DarkRiftWriter.Create())
+            {
+                writer.Write(e.Client.ID);
+
+                using (Message message = Message.Create(Tags.DespawnPlayerTag, writer))
+                {
+                    foreach (IClient client in ClientManager.GetAllClients())
+                        client.SendMessage(message, SendMode.Reliable);
+                }
+            }
+        }
+
         void MovementMessageReceived(object sender, MessageReceivedEventArgs e)
         {
             using (Message message = e.GetMessage() as Message)
@@ -103,6 +120,17 @@ namespace AgarPlugin
                         player.X = newX;
                         player.Y = newY;
 
+                        AgarFoodManager foodManager = PluginManager.GetPluginByType<AgarFoodManager>();
+                        foreach(FoodItem food in foodManager.foodItems)
+                        {
+                            if (Math.Pow(player.X - food.X, 2) + Math.Pow(player.Y - food.Y, 2) < Math.Pow(player.Radius, 2))
+                            {
+                                player.Radius += food.Radius;
+                                SendRadiusUpdate(player);
+                                foodManager.Eat(food);
+                            }
+                        }
+
                         using (DarkRiftWriter writer = DarkRiftWriter.Create())
                         {
                             writer.Write(player.ID);
@@ -114,6 +142,21 @@ namespace AgarPlugin
                         foreach (IClient c in ClientManager.GetAllClients().Where(x => x != e.Client))
                             c.SendMessage(message, e.SendMode);
                     }
+                }
+            }
+        }
+
+        void SendRadiusUpdate(Player player)
+        {
+            using (DarkRiftWriter writer = DarkRiftWriter.Create())
+            {
+                writer.Write(player.ID);
+                writer.Write(player.Radius);
+
+                using (Message message = Message.Create(Tags.RadiusUpdateFlag, writer))
+                {
+                    foreach (IClient c in ClientManager.GetAllClients())
+                        c.SendMessage(message, SendMode.Reliable);
                 }
             }
         }

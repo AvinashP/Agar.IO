@@ -4,6 +4,7 @@ using UnityEngine;
 using DarkRift.Client.Unity;
 using DarkRift.Client;
 using DarkRift;
+using System;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class PlayerSpawner : MonoBehaviour
     [Tooltip("The network player manager.")]
     NetworkPlayerManager networkPlayerManager;
 
+    [SerializeField]
+    CameraFollow cameraFollow;
+
     void Awake()
     {
         if (client == null)
@@ -45,7 +49,18 @@ public class PlayerSpawner : MonoBehaviour
             Application.Quit();
         }
 
-        client.MessageReceived += SpawnPlayer;
+        client.MessageReceived += MessageReceived;
+    }
+
+    void MessageReceived(object sender, MessageReceivedEventArgs e)
+    {
+        using (Message message = e.GetMessage() as Message)
+        {
+            if (message.Tag == Tags.SpawnPlayerTag)
+                SpawnPlayer(sender, e);
+            else if (message.Tag == Tags.DespawnPlayerTag)
+                DespawnPlayer(sender, e);
+        }
     }
 
     void SpawnPlayer(object sender, MessageReceivedEventArgs e)
@@ -53,47 +68,54 @@ public class PlayerSpawner : MonoBehaviour
         using (Message message = e.GetMessage())
         using (DarkRiftReader reader = message.GetReader())
         {
-            if (message.Tag == Tags.SpawnPlayerTag)
+            if (reader.Length % 17 != 0)
             {
-                if (reader.Length % 17 != 0)
-                {
-                    Debug.LogWarning("Received malformed spawn packet.");
-                    return;
-                }
-
-                while (reader.Position < reader.Length)
-                {
-                    ushort id = reader.ReadUInt16();
-                    Vector3 position = new Vector3(reader.ReadSingle(), reader.ReadSingle());
-                    float radius = reader.ReadSingle();
-                    Color32 color = new Color32(
-                        reader.ReadByte(),
-                        reader.ReadByte(),
-                        reader.ReadByte(),
-                        255
-                    );
-
-                    GameObject obj;
-                    if (id == client.ID)
-                    {
-                        obj = Instantiate(controllablePrefab, position, Quaternion.identity) as GameObject;
-
-                        Player player = obj.GetComponent<Player>();
-                        player.Client = client;
-                    }
-                    else
-                    {
-                        obj = Instantiate(networkPrefab, position, Quaternion.identity) as GameObject;
-                    }
-
-                    AgarObject agarObj = obj.GetComponent<AgarObject>();
-
-                    agarObj.SetRadius(radius);
-                    agarObj.SetColor(color);
-
-                    networkPlayerManager.Add(id, agarObj);
-                }
+                Debug.LogWarning("Received malformed spawn packet.");
+                return;
             }
+
+            while (reader.Position < reader.Length)
+            {
+                ushort id = reader.ReadUInt16();
+                Vector3 position = new Vector3(reader.ReadSingle(), reader.ReadSingle());
+                float radius = reader.ReadSingle();
+                Color32 color = new Color32(
+                    reader.ReadByte(),
+                    reader.ReadByte(),
+                    reader.ReadByte(),
+                    255
+                );
+
+                GameObject obj;
+                if (id == client.ID)
+                {
+                    obj = Instantiate(controllablePrefab, position, Quaternion.identity) as GameObject;
+
+                    Player player = obj.GetComponent<Player>();
+                    player.Client = client;
+
+                    cameraFollow.Target = obj.transform;
+                }
+                else
+                {
+                    obj = Instantiate(networkPrefab, position, Quaternion.identity) as GameObject;
+                }
+
+                AgarObject agarObj = obj.GetComponent<AgarObject>();
+
+                agarObj.SetRadius(radius);
+                agarObj.SetColor(color);
+
+                networkPlayerManager.Add(id, agarObj);
+            }
+
         }
+    }
+
+    void DespawnPlayer(object sender, MessageReceivedEventArgs e)
+    {
+        using (Message message = e.GetMessage())
+        using (DarkRiftReader reader = message.GetReader())
+            networkPlayerManager.DestroyPlayer(reader.ReadUInt16());
     }
 }

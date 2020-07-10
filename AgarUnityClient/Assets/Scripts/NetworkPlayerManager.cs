@@ -23,6 +23,15 @@ public class NetworkPlayerManager : MonoBehaviour
         client.MessageReceived += OnMessageReceived;
     }
 
+    public void DestroyPlayer(ushort id)
+    {
+        AgarObject o = networkPlayers[id];
+
+        Destroy(o.gameObject);
+
+        networkPlayers.Remove(id);
+    }
+
     private void OnMessageReceived(object sender, MessageReceivedEventArgs e)
     {
         using (Message message = e.GetMessage())
@@ -52,6 +61,18 @@ public class NetworkPlayerManager : MonoBehaviour
                         networkPlayers[id].SetMovePosition(newPosition);
                         networkPlayers[id].SetRadius(newRadius);
                         networkPlayers[id].SetColor(newColor);
+                    }
+                }
+            }
+            else if(message.Tag == Tags.RadiusUpdateFlag)
+            {
+                using (DarkRiftReader reader = message.GetReader())
+                {
+                    ushort id = reader.ReadUInt16();
+                    if (networkPlayers.ContainsKey(id))
+                    {
+                        float newRadius = reader.ReadSingle();
+                        networkPlayers[id].SetRadius(newRadius);
                     }
                 }
             }

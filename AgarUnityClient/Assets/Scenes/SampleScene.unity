@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 242732174}
   - component: {fileID: 242732176}
   - component: {fileID: 242732177}
+  - component: {fileID: 242732178}
   m_Layer: 0
   m_Name: Network
   m_TagString: Untagged
@@ -209,6 +210,7 @@ MonoBehaviour:
   networkPrefab: {fileID: 9148692562396794631, guid: a683416b7a425491a8a408172dac9f03,
     type: 3}
   networkPlayerManager: {fileID: 242732177}
+  cameraFollow: {fileID: 963194229}
 --- !u!114 &242732177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +224,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   client: {fileID: 242732174}
+--- !u!114 &242732178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242732173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ecbf0dfc62d48b6ac06a34c9a11995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  client: {fileID: 242732174}
+  foodPrefab: {fileID: 9034078908719839886, guid: 8f36d6d6348864c44bb1768aadfc315d,
+    type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
