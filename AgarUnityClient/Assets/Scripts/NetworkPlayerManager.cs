@@ -40,27 +40,11 @@ public class NetworkPlayerManager : MonoBehaviour
             {
                 using (DarkRiftReader reader = message.GetReader())
                 {
-
-                    if (reader.Length % 17 != 0)
-                    {
-                        Debug.LogError("Currupted message");
-                        return;
-                    }
-
                     ushort id = reader.ReadUInt16();
                     if (networkPlayers.ContainsKey(id))
                     {
                         Vector3 newPosition = new Vector3(reader.ReadSingle(), reader.ReadSingle());
-                        float newRadius = reader.ReadSingle();
-                        Color32 newColor = new Color32(
-                            reader.ReadByte(),
-                            reader.ReadByte(),
-                            reader.ReadByte(),
-                            255
-                            );
                         networkPlayers[id].SetMovePosition(newPosition);
-                        networkPlayers[id].SetRadius(newRadius);
-                        networkPlayers[id].SetColor(newColor);
                     }
                 }
             }
